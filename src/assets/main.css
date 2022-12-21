@@ -1,0 +1,21 @@
+@import "./base.css";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Chakra Petch", sans-serif;
+}
+
+:root {
+  --prussian-blue: #0D2E4A;
+  --prussian-light-blue: rgb(4,82,126);
+  --prussian-sky-blue: rgba(0,212,255,1);
+  --turquoise-100: #44FFD1;
+  --turquoise-75: #44ffd0e3;
+  --grey-sad: #333333a2;
+  --ducky-yellow: #F2AF29;
+  --ducky-yellow-lighter: #ffe600;
+  --prussian-blue-transparent: #0d2e4aa9;
+  --prussian-dark-blue:#071E30;
+}
