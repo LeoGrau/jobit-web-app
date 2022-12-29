@@ -4,8 +4,15 @@
       <div class="background-container flex">
         <img src="https://wallpaperaccess.com/full/1101997.png" alt="" />
         <div class="social">
-          <ul>
-            <li></li>
+          <ul class="flex gap-2">
+            <li v-for="socialIcon in socialIcons" :key="socialIcon.key">
+              <a
+                class="social-icon"
+                target="_blank"
+                :class="socialIcon.socialIcon.iconClass"
+                :href="socialIcon.socialIcon.url"
+              ></a>
+            </li>
           </ul>
         </div>
       </div>
@@ -15,7 +22,7 @@
       >
         <circle-photo></circle-photo>
         <div class="text flex flex-column align-self-end">
-          <p>Leonardo Manuel Grau Vargas</p>
+          <h1>Leonardo Manuel Grau Vargas</h1>
           <p>Software Engineer</p>
         </div>
       </div>
@@ -63,7 +70,7 @@
       </div>
       <ul class="flex flex-column gap-2">
         <li v-for="userTechSkill in userTechSkills" :key="userTechSkill.key">
-          <education-item></education-item>
+          <project-item></project-item>
         </li>
       </ul>
     </section>
@@ -75,24 +82,53 @@
 import CirclePhoto from "../components/circle-photo.vue";
 import TechSkill from "../components/tech-skill.vue";
 import EducationItem from "../components/education-item.vue";
+import ProjectItem from "../components/project-item.vue";
 //Models
-import UserTechSkill from "../models/UserTechSkill.js";
+import ApplicantTechSkill from "../models/applicant-tech-skill";
+
+//Objects
+import SocialIcon from "../components/objects/social-icon";
+
 export default {
   components: {
     CirclePhoto,
     TechSkill,
     EducationItem,
+    ProjectItem,
   },
   data() {
     return {
       userTechSkills: [
         {
           key: 1,
-          userTechSkill: new UserTechSkill("React", 3, ""),
+          userTechSkill: new ApplicantTechSkill("React", 3, ""),
         },
         {
           key: 2,
-          userTechSkill: new UserTechSkill("Vue", 2, ""),
+          userTechSkill: new ApplicantTechSkill("Vue", 2, ""),
+        },
+      ],
+      socialIcons: [
+        {
+          key: 1,
+          socialIcon: new SocialIcon(
+            "https://github.com/LeoGrau",
+            "bi bi-github"
+          ),
+        },
+        {
+          key: 2,
+          socialIcon: new SocialIcon(
+            "https://github.com/LeoGrau",
+            "bi bi-twitter"
+          ),
+        },
+        {
+          key: 3,
+          socialIcon: new SocialIcon(
+            "https://github.com/LeoGrau",
+            "bi bi-youtube"
+          ),
         },
       ],
     };
@@ -174,7 +210,18 @@ section.banner {
   z-index: 3;
   border-radius: 6px;
   background-color: rgba(255, 255, 255, 0.582);
-  width: 60px;
-  height: 60px;
+  width: fit-content;
+  height: fit-content;
+  padding: 5px;
+}
+
+.social-icon {
+  color: white;
+  font-size: 20px;
+  transition: all 0.1s ease-in-out;
+}
+.social-icon:hover {
+  color: black;
+  font-size: 20px;
 }
 </style>

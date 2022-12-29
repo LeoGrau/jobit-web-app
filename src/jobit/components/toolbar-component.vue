@@ -22,9 +22,14 @@
 </template>
 
 <script>
+//Components
 import IconToolbar from "./icon-toolbar.vue";
-import LabelIcon from "./objects/label-icon";
+
+//Enums
 import { labelIconsTypes } from "./enums/label-icon-types.js";
+
+//Objects
+import LabelIcon from "./objects/label-icon";
 
 export default {
   components: { IconToolbar },

@@ -1,4 +1,4 @@
-class UserTechSkill {
+class ApplicantTechSkill {
   constructor(techName, experienceTime, photoUrl) {
     this.techName = techName;
     this.experienceTime = experienceTime;
@@ -6,4 +6,4 @@ class UserTechSkill {
   }
 }
 
-export default UserTechSkill;
+export default ApplicantTechSkill;

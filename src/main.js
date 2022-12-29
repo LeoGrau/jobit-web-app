@@ -7,6 +7,8 @@ import PrimeVue from "primevue/config";
 
 //Saucy Icons
 import "primeicons/primeicons.css";
+import "primevue/resources/themes/saga-blue/theme.css";
+import "primevue/resources/primevue.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 //Component imports
@@ -25,7 +27,7 @@ app.use(createPinia());
 app.use(router);
 
 //Adding primevue components
-app.component("pv-toolbar", Button);
+app.component("pv-button", Button);
 app.component("pv-avatar", Avatar);
 
 app.mount("#app");

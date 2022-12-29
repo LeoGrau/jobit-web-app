@@ -77,7 +77,7 @@ export default {
 }
 
 .icon i {
-  color: var(--ducky-yellow);
+  color: white;
   text-decoration: none;
   transition: all 0.2s ease-in;
   font-size: 1.3rem;
@@ -86,7 +86,7 @@ export default {
 /*font-family: "Chakra Petch", sans-serif;*/
 
 .icon p {
-  color: var(--ducky-yellow);
+  color: white;
   font-size: 0.85rem;
   font-weight: 600;
   transition: all 0.2s ease-in;
