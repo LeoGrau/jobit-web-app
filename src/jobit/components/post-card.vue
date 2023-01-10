@@ -9,8 +9,8 @@
           ></pv-avatar>
         </router-link>
         <div class="company-info-right flex flex-column">
-          <p>Google, LLC</p>
-          <p>Technology, information and internet</p>
+          <p>{{ postJobShow.title }}</p>
+          <p>{{ "Mining" }}</p>
         </div>
       </div>
       <div class="actions flex gap-2">
@@ -32,8 +32,8 @@
       </div>
     </header>
     <main class="content">
-      <h3>Web Developer</h3>
-      <reducible-text :text="description"></reducible-text>
+      <h3>{{ postJobShow.jobName }}</h3>
+      <reducible-text :text="postJobShow.description"></reducible-text>
       <h4>Recruiters</h4>
       <div class="flex gap-2">
         <router-link to="/applicant-profile/1">
@@ -50,13 +50,13 @@
       <h4>Job Description</h4>
       <ul class="job-description">
         <li
-          v-for="jobAttributeLabel in jobAttributeLabels"
+          v-for="(jobAttributeLabel, index) in jobAttributeLabels"
           :key="jobAttributeLabel.attributeName"
           class="flex align-items-center"
         >
           <i :class="jobAttributeLabel.attributeIcon"></i>
           <span>{{
-            jobAttributeLabel.attributeName + ": " + "Not defined"
+            jobAttributeLabel.attributeName + ": " + jobAttributes.at(index)
           }}</span>
         </li>
       </ul>
@@ -93,11 +93,22 @@
 </template>
 
 <script>
+//Components
 import ReducibleText from "../components/reducible-text.vue";
 import AttributeJob from "../components/objects/attribute-job";
+//Objects
+import PostJob from "../models/post-jobs";
+//Consts
+import { jobModalities } from "../components/enums/job-modalities";
 export default {
   components: {
     ReducibleText,
+  },
+  props: {
+    postJob: {
+      default: () => undefined,
+      type: Object,
+    },
   },
   name: "PostCard",
   data() {
@@ -109,6 +120,8 @@ export default {
         new AttributeJob("Time Modality", "bi bi-alarm"),
         new AttributeJob("Place", "bi bi-geo-alt-fill"),
       ],
+      postJobShow: PostJob.prototype,
+      jobAttributes: [],
       description:
         "Hey! Being bored? What happened? Being awesome. What happened? Well, that's all right. Hey! Being bored? What happened? Being awesome. What happened? Well, that's all right. Hey! Being bored? What happened? Being awesome. What happened? Well, that's all right.",
       readMoreActivated: false,
@@ -117,6 +130,35 @@ export default {
       commend: false,
       comment: false,
     };
+  },
+  created() {
+    this.setPostJob();
+    this.setJobAttributes();
+  },
+  methods: {
+    async setPostJob() {
+      this.postJobShow = new PostJob(
+        this.postJob["title"],
+        this.postJob["description"],
+        this.postJob["companyId"],
+        this.postJob["jobName"],
+        this.postJob["salary"],
+        this.postJob["place"],
+        this.postJob["jobModality"],
+        this.postJob["timeModality"]
+      );
+    },
+    async setJobAttributes() {
+      this.jobAttributes.push(this.postJob["salary"]);
+      this.jobAttributes.push(this.postJob["jobName"]);
+      this.jobAttributes.push(
+        jobModalities[this.postJob["jobModality"]].modalityName
+      );
+      this.jobAttributes.push(
+        jobModalities[this.postJob["timeModality"]].modalityName
+      );
+      this.jobAttributes.push(this.postJob["place"]);
+    },
   },
 };
 </script>

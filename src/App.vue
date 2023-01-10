@@ -6,6 +6,7 @@
 </template>
 
 <script>
+//import { ApplicantTechSkillService } from "./jobit/services/applicant-tech-skill.service";
 import ToolbarComponent from "./jobit/components/toolbar-component.vue";
 export default {
   components: {

@@ -11,7 +11,7 @@
         <li>
           <router-link to="/applicant-profile/1">
             <pv-avatar
-              image="https://scontent.flim15-2.fna.fbcdn.net/v/t39.30808-6/297570371_371964115095464_3592931005646396479_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeGmCOPr__eoON2CXg2MQrr5vF7QytY0Zwm8XtDK1jRnCaX5zASgLJF7zwl4B60rLMgGfMTPiRHSeDDWN2tgC5_-&_nc_ohc=of0OUqq1xDUAX8qZdQb&_nc_ht=scontent.flim15-2.fna&oh=00_AfCe8wCPH0bjpUryGxTedWAgxI5xA5JguVGngzTIjZ-RRw&oe=63A78B5E"
+              image="https://scontent.flim15-2.fna.fbcdn.net/v/t39.30808-6/322333749_827608328272598_6768139983573928056_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeEY7rG5VODPTxp0OZLFPMgVxhsSnoDSAMTGGxKegNIAxGdZIHBj4yg5EfjQdnNMk2T3PLH-XtRM518f31ix8UB7&_nc_ohc=ZeH72vc_YrMAX8seivS&_nc_ht=scontent.flim15-2.fna&oh=00_AfDyzsZInfjF59mhleATvffVAd7bJcaZiPGvLwoS2IT4ew&oe=63B4B97E"
               shape="circle"
             ></pv-avatar>
           </router-link>
