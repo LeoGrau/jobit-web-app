@@ -1,7 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 import HomeView from "../jobit/pages/home-view.vue";
+import LoginView from "../jobit/pages/login-view.vue"
 import ApplicantProfileView from "../jobit/pages/applicant-profile-view.vue";
+import PageNotFound from "../jobit/pages/page-not-found.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -20,9 +22,19 @@ const router = createRouter({
     //   component: () => import('../views/AboutView.vue')
     // }
     {
+      path: "/login",
+      name: "login",
+      component: LoginView,
+    },
+    {
       path: "/applicant-profile/:id",
       name: "applicant-profile",
       component: ApplicantProfileView,
+    },
+    {
+      path: "/:pathMatch(.*)*",
+      name: "error",
+      component: PageNotFound,
     },
   ],
 });

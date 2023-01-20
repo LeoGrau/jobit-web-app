@@ -1,18 +1,39 @@
 <template>
   <div class="tech-skill flex flex-row gap-2 align-items-center">
-    <img
-      src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png"
-      alt="tech-skill image"
-    />
+    <img :src="applicantTechSkillShow.photoUrl" alt="tech-skill image" />
     <div class="tech-skill-info flex flex-column">
-      <p>React</p>
+      <p>{{ applicantTechSkillShow.techName }}</p>
       <p><strong>Experience:</strong> 3 Years</p>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+import ApplicantTechSkill from "../models/applicant-tech-skill";
+export default {
+  props: {
+    applicantTechSKillProp: Object,
+  },
+  data() {
+    return {
+      applicantTechSkillShow: ApplicantTechSkill.prototype,
+    };
+  },
+  created() {
+    console.log("undefined?", this.applicantTechSKillProp);
+    this.setApplicantTechSkill();
+  },
+
+  methods: {
+    async setApplicantTechSkill() {
+      await (this.applicantTechSkillShow = new ApplicantTechSkill(
+        this.applicantTechSKillProp["techName"],
+        this.applicantTechSKillProp["experienceTime"],
+        this.applicantTechSKillProp["photoUrl"]
+      ));
+    },
+  },
+};
 </script>
 
 <style scoped>

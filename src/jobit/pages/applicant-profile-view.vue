@@ -20,10 +20,10 @@
         class="user-main flex flex-row align-items-center gap-1"
         style="position: absolute"
       >
-        <circle-photo></circle-photo>
+        <circle-photo :photoUrl="applicant.photoUrl"></circle-photo>
         <div class="text flex flex-column align-self-end">
-          <h1>Leonardo Manuel Grau Vargas</h1>
-          <p>Software Engineer</p>
+          <h1>{{ applicant.firstname + " " + applicant.lastname }}</h1>
+          <p>{{ applicant.profession }}</p>
         </div>
       </div>
     </section>
@@ -34,10 +34,7 @@
           <i class="bi bi-person-fill"></i>
         </div>
         <p class="text">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam
-          vero porro, illo ut alias at amet ea, asperiores quidem error, enim
-          repudiandae praesentium mollitia reprehenderit nobis. Perferendis
-          optio blanditiis dolore.
+          {{ applicant.description }}
         </p>
       </section>
       <section class="tech-skills profile-card">
@@ -46,8 +43,13 @@
           <i class="bi bi-laptop"></i>
         </div>
         <ul class="flex flex-column gap-2">
-          <li v-for="userTechSkill in userTechSkills" :key="userTechSkill.key">
-            <tech-skill></tech-skill>
+          <li
+            v-for="applicantTechSkill in applicant.applicantTechSkills"
+            :key="applicantTechSkill['techName']"
+          >
+            <tech-skill
+              :applicantTechSKillProp="applicantTechSkill"
+            ></tech-skill>
           </li>
         </ul>
       </section>
@@ -85,9 +87,13 @@ import EducationItem from "../components/education-item.vue";
 import ProjectItem from "../components/project-item.vue";
 //Models
 import ApplicantTechSkill from "../models/applicant-tech-skill";
+import ApplicantProfile from "../models/applicant-profile";
 
 //Objects
 import SocialIcon from "../components/objects/social-icon";
+
+//Service
+import ApplicantProfileService from "../services/applicant-profile.service";
 
 export default {
   components: {
@@ -131,7 +137,32 @@ export default {
           ),
         },
       ],
+      applicantId: Number,
+      applicant: ApplicantProfile.prototype,
     };
+  },
+  created() {
+    this.applicantId = this.$route.params.id;
+    this.setApplicantProfile();
+  },
+  methods: {
+    async setApplicantProfile() {
+      var data = (
+        await ApplicantProfileService.getProfileById(this.applicantId)
+      ).data;
+
+      this.applicant = new ApplicantProfile(
+        data["applicantId"],
+        data["firstname"],
+        data["lastname"],
+        data["photoUrl"],
+        data["description"],
+        data["profession"],
+        data["applicantTechSkills"]
+      );
+      console.log("applicant", this.applicant);
+      console.log("What?: ", data["applicantTechSkills"]);
+    },
   },
 };
 </script>

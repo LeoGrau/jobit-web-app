@@ -8,3 +8,5 @@ export default axios.create({
     "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
   },
 });
+
+//axios create is http to export

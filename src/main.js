@@ -14,6 +14,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 //Component imports
 import Button from "primevue/button";
 import Avatar from "primevue/avatar";
+import Dialog from "primevue/dialog";
 
 //Styles
 import "./assets/main.css";
@@ -29,5 +30,6 @@ app.use(router);
 //Adding primevue components
 app.component("pv-button", Button);
 app.component("pv-avatar", Avatar);
+app.component("pv-dialog", Dialog);
 
 app.mount("#app");
