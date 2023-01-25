@@ -15,6 +15,10 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import Button from "primevue/button";
 import Avatar from "primevue/avatar";
 import Dialog from "primevue/dialog";
+import Password from "primevue/password";
+import Card from "primevue/card";
+import InputText from "primevue/inputtext";
+import Divider from "primevue/divider";
 
 //Styles
 import "./assets/main.css";
@@ -31,5 +35,9 @@ app.use(router);
 app.component("pv-button", Button);
 app.component("pv-avatar", Avatar);
 app.component("pv-dialog", Dialog);
+app.component("pv-password", Password);
+app.component("pv-card", Card);
+app.component("pv-input-text", InputText);
+app.component("pv-divider", Divider);
 
 app.mount("#app");

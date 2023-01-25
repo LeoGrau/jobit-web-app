@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 import HomeView from "../jobit/pages/home-view.vue";
-import LoginView from "../jobit/pages/login-view.vue"
+import LoginView from "../jobit/pages/login-view.vue";
 import ApplicantProfileView from "../jobit/pages/applicant-profile-view.vue";
 import PageNotFound from "../jobit/pages/page-not-found.vue";
 

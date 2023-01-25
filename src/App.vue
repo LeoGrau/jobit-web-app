@@ -1,6 +1,6 @@
 <template>
   <div class="app">
-    <toolbar-component></toolbar-component>
+    <toolbar-component v-if="isAuthenticated"></toolbar-component>
     <router-view></router-view>
   </div>
 </template>
@@ -11,6 +11,12 @@ import ToolbarComponent from "./jobit/components/toolbar-component.vue";
 export default {
   components: {
     ToolbarComponent,
+  },
+  //Just temporal
+  computed: {
+    isAuthenticated() {
+      return false;
+    },
   },
 };
 </script>
