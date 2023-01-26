@@ -1,31 +1,13 @@
 <template>
   <div class="login flex justify-content-center">
-    <div class="nav flex justify-content-between align-items-center">
-      <div class="logo flex flex-column">
-        <h1 class="title">JoBit</h1>
-        <hr class="line" />
-      </div>
-      <ul class="options flex gap-3">
-        <li>
-          <router-link class="text-white-alpha-80" to="login"
-            >Join Us</router-link
-          >
-        </li>
-        <li>
-          <router-link class="text-white-alpha-80" to="register"
-            >Register</router-link
-          >
-        </li>
-      </ul>
-    </div>
     <div class="left">
       <div class="black"></div>
       <div class="content flex-column">
-        <h1 class="slogan">
+        <!-- <h1 class="slogan">
           <span class="left-bracket">{</span>
           <span style=""> Let's start coding with sauce </span>
           <span class="right-bracket">}</span>
-        </h1>
+        </h1> -->
         <pv-card class="card">
           <template v-slot:content>
             <div class="card-content flex flex-column">
@@ -109,12 +91,7 @@
     <div class="right">
       <div class="content">
         <div
-          class="
-            items
-            flex flex-column
-            justify-content-between
-            align-items-center
-          "
+          class="items flex flex-column justify-content-between align-items-center"
         >
           <header></header>
           <main class="text-center">
@@ -198,8 +175,8 @@ button {
 }
 .card {
   background-color: rgba(255, 255, 255, 0.85);
-  max-width: 481px;
-  width: 70%;
+  max-width: 400px;
+  width: 88%;
 }
 
 .field {
@@ -417,7 +394,7 @@ ul.options li:hover :deep(a) {
   color: white !important;
 }
 
-@media (max-width: 700px) and (min-width: 120px) {
+@media (max-width: 768px) {
   .title {
     color: white;
   }

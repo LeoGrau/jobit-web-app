@@ -1,7 +1,7 @@
 <template>
   <div class="app">
-    <toolbar-component v-if="isAuthenticated"></toolbar-component>
-    <router-view></router-view>
+    <toolbar-component :isAuthenticated="isAuthenticated"></toolbar-component>
+    <router-view class="content"></router-view>
   </div>
 </template>
 
@@ -21,4 +21,4 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped></style>

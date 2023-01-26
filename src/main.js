@@ -11,6 +11,10 @@ import "primevue/resources/themes/saga-blue/theme.css";
 import "primevue/resources/primevue.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
+//Styles
+import "./assets/main.css";
+import "primeflex/primeflex.css";
+
 //Component imports
 import Button from "primevue/button";
 import Avatar from "primevue/avatar";
@@ -18,17 +22,22 @@ import Dialog from "primevue/dialog";
 import Password from "primevue/password";
 import Card from "primevue/card";
 import InputText from "primevue/inputtext";
+import InputNumber from "primevue/inputnumber";
 import Divider from "primevue/divider";
-
-//Styles
-import "./assets/main.css";
-import "primeflex/primeflex.css";
+import Steps from "primevue/steps";
+import Toast from "primevue/toast";
+import ConfirmationService from "primevue/confirmationservice";
+import ToastService from "primevue/toastservice";
+import DialogService from "primevue/dialogservice";
 
 const app = createApp(App);
 
 //Uses
 app.use(PrimeVue, { ripple: true });
 app.use(createPinia());
+app.use(ConfirmationService);
+app.use(ToastService);
+app.use(DialogService);
 app.use(router);
 
 //Adding primevue components
@@ -38,6 +47,9 @@ app.component("pv-dialog", Dialog);
 app.component("pv-password", Password);
 app.component("pv-card", Card);
 app.component("pv-input-text", InputText);
+app.component("pv-input-number", InputNumber);
 app.component("pv-divider", Divider);
+app.component("pv-steps", Steps);
+app.component("pv-toast", Toast);
 
 app.mount("#app");
