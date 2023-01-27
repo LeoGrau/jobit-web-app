@@ -29,6 +29,8 @@ import Toast from "primevue/toast";
 import ConfirmationService from "primevue/confirmationservice";
 import ToastService from "primevue/toastservice";
 import DialogService from "primevue/dialogservice";
+import Calendar from "primevue/calendar";
+import Dropdown from "primevue/dropdown";
 
 const app = createApp(App);
 
@@ -51,5 +53,7 @@ app.component("pv-input-number", InputNumber);
 app.component("pv-divider", Divider);
 app.component("pv-steps", Steps);
 app.component("pv-toast", Toast);
+app.component("pv-calendar", Calendar);
+app.component("pv-dropdown", Dropdown);
 
 app.mount("#app");

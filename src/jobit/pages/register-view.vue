@@ -1,22 +1,35 @@
 <template>
-  <div class="register">
+  <div class="register flex justify-content-center">
     <pv-toast />
 
-    <div class="card">
-      <pv-steps :model="items" :readonly="true" aria-label="Form Steps" />
-    </div>
+    <div class="content flex flex-column gap-2">
+      <pv-card class="card">
+        <template #content>
+          <div>
+            <pv-steps :model="items" :readonly="true" aria-label="Form Steps" />
+          </div>
+        </template>
+      </pv-card>
 
-    <router-view
-      v-slot="{ Component }"
-      :formData="formObject"
-      @prevPage="prevPage($event)"
-      @nextPage="nextPage($event)"
-      @complete="complete"
-    >
-      <keep-alive>
-        <component :is="Component" />
-      </keep-alive>
-    </router-view>
+      <pv-card>
+        <template #content>
+          <div>
+            <router-view
+              class="card"
+              v-slot="{ Component }"
+              :formData="formObject"
+              @prevPage="prevPage($event)"
+              @nextPage="nextPage($event)"
+              @complete="complete"
+            >
+              <keep-alive>
+                <component :is="Component" />
+              </keep-alive>
+            </router-view>
+          </div>
+        </template>
+      </pv-card>
+    </div>
   </div>
 </template>
 
@@ -30,6 +43,10 @@ export default {
           label: "Personal Information",
           to: "/register",
         },
+        {
+          label: "Profesional Information",
+          to: "/register/professional-info",
+        }
       ],
       formObject: {},
     };
@@ -65,7 +82,12 @@ export default {
 <style scoped>
 .register {
   transform: translateY(65px);
+  width: 100%;
   height: 100vh;
+}
+
+.register .content {
+  width: 80%;
 }
 .full {
   height: 100vh;
