@@ -31,6 +31,11 @@ import ToastService from "primevue/toastservice";
 import DialogService from "primevue/dialogservice";
 import Calendar from "primevue/calendar";
 import Dropdown from "primevue/dropdown";
+import FileUpload from "primevue/fileupload";
+import TextArea from "primevue/textarea";
+
+//Another free source
+import CountryFlag from "vue-country-flag-next";
 
 const app = createApp(App);
 
@@ -55,5 +60,10 @@ app.component("pv-steps", Steps);
 app.component("pv-toast", Toast);
 app.component("pv-calendar", Calendar);
 app.component("pv-dropdown", Dropdown);
+app.component("pv-file-upload", FileUpload);
+app.component("pv-text-area", TextArea);
+
+//Adding other primevue components
+app.component("country-flag", CountryFlag);
 
 app.mount("#app");

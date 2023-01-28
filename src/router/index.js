@@ -5,8 +5,10 @@ import LoginView from "../jobit/pages/login-view.vue";
 import ApplicantProfileView from "../jobit/pages/applicant-profile-view.vue";
 import PageNotFound from "../jobit/pages/page-not-found.vue";
 import RegisterView from "../jobit/pages/register-view.vue";
+import SketchToDelete from "../jobit/pages/sketch-to-delete.vue";
 //Subviews
-import PersonalInfo from "../jobit/pages/register/personal-info.vue";
+import PersonalInfoSubview from "../jobit/pages/register/personal-info.vue";
+import ProfessionalInfoSubview from "../jobit/pages/register/professional-info.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -29,7 +31,12 @@ const router = createRouter({
         {
           path: "",
           name: "personal information",
-          component: PersonalInfo,
+          component: PersonalInfoSubview,
+        },
+        {
+          path: "professional-info",
+          name: "professional information",
+          component: ProfessionalInfoSubview,
         },
       ],
     },
@@ -37,6 +44,11 @@ const router = createRouter({
       path: "/applicant-profile/:id",
       name: "applicant-profile",
       component: ApplicantProfileView,
+    },
+    {
+      path: "/sketch",
+      name: "sketch",
+      component: SketchToDelete,
     },
     {
       path: "/:pathMatch(.*)*",
