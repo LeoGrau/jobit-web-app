@@ -1,40 +1,73 @@
 <template>
   <div class="profile-photo-upload">
-    <div class="circle flex align-items-center justify-content-center">
-      <i class="bi bi-person-fill text-blue-300 text-6xl"></i>
-    </div>
-    <div class="upload-container">
-      <pv-file-upload
-        class="file-upload"
-        mode="basic"
-        uploadIcon="pi pi-camera"
-        chooseLabel="Photo"
-      />
-    </div>
+    <div
+      :class="[
+        previewImage ? 'uploaded-background' : 'not-uploaded-background',
+      ]"
+      :style="{
+        backgroundImage: `url(${previewImage})`,
+        backgroundSize: 'cover',
+      }"
+    ></div>
+    <input
+      ref="fileInput"
+      class="d-none"
+      type="file"
+      @input="pickImageFromFileBrowser"
+    />
+    <button @click="selectImage">
+      <i class="bi bi-camera-fill"></i>
+    </button>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      previewImage: null,
+    };
+  },
+  methods: {
+    selectImage() {
+      this.$refs.fileInput.click();
+    },
+    pickImageFromFileBrowser() {
+      console.log("xd");
+      let input = this.$refs.fileInput;
+      let selectedFile = input.files; //The tag isn't multiple, so it's just 1 file.
+      console.log(selectedFile.length);
+      if (selectedFile.length > 0) {
+        let reader = new FileReader();
+        //Set event 'on load()'
+        reader.onload = (event) => {
+          console.log(event);
+          this.previewImage = event.target.result;
+          console.log(this.previewImage);
+        };
+        console.log(selectedFile[0]);
+        reader.readAsDataURL(selectedFile[0]);
+        this.$emit("input", selectedFile[0]);
+      }
+    },
+  },
+};
 </script>
 
 <style scoped>
+.uploaded-background {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.not-uploaded-background {
+  width: 0px;
+  height: 0px;
+}
 .profile-photo-upload {
   position: relative;
   width: 150px;
   height: 150px;
-}
-.circle {
-  position: absolute;
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  background-color: var(--blue-100);
-  border: 4px dashed var(--blue-300);
-}
-.upload-container {
-  position: absolute !important;
-  bottom: 0 !important;
-  right: 0 !important;
 }
 </style>
