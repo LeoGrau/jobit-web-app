@@ -1,14 +1,14 @@
 <template>
   <div class="sketch">
-    <profile-photo-upload></profile-photo-upload>
+    <tag-component></tag-component>
   </div>
 </template>
 
 <script>
-import ProfilePhotoUpload from "../../../src/jobit/components/profile-photo-upload.vue";
+import TagComponent from "../components/tag-component.vue";
 export default {
   components: {
-    ProfilePhotoUpload,
+    TagComponent,
   },
 };
 </script>

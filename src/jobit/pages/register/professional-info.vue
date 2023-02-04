@@ -95,16 +95,28 @@
           <section>
             <h3 class="pb-4">Related Tags</h3>
             <div class="field">
-              <div class="flex gap-3">
-                <div class="p-float-label">
-                  <pv-input-text></pv-input-text>
-                  <label for="">Tag</label>
+              <div class="flex justify-content-between align-items-center">
+                <div class="flex gap-3">
+                  <div class="p-float-label">
+                    <pv-input-text v-model="tag"></pv-input-text>
+                    <label for="">Tag</label>
+                  </div>
+                  <pv-button
+                    @click="addTag()"
+                    class="p-button-success w-max"
+                    label="Add"
+                    icon="bi bi-plus"
+                  ></pv-button>
                 </div>
-                <pv-button
-                  class="p-button-success w-max"
-                  label="Add"
-                  icon="bi bi-plus"
-                ></pv-button>
+                <div class="tags-container">
+                  <tag-component
+                    style="display: inline-block"
+                    v-for="(_tag, index) in tags"
+                    :key="index"
+                    :tagName="_tag"
+                    @delete-tag="deleteTag(index)"
+                  ></tag-component>
+                </div>
               </div>
             </div>
           </section>
@@ -138,13 +150,19 @@
 </template>
 
 <script>
+import TagComponent from "../../components/tag-component.vue";
 export default {
+  components: {
+    TagComponent,
+  },
   data() {
     return {
       career: undefined,
       degree: undefined,
       startDate: undefined,
       endDate: undefined,
+      tag: undefined,
+      tags: [],
       careers: [
         {
           id: 1,
@@ -172,6 +190,15 @@ export default {
     clearDates() {
       this.endDate = this.startDate = undefined;
     },
+    addTag() {
+      console.log(this.tag);
+      if (this.tag != "" && this.tag != undefined) this.tags.push(this.tag);
+      //Clear tag text before adding
+      this.tag = "";
+    },
+    deleteTag(index) {
+      this.tags.splice(index, 1);
+    },
   },
   watch: {
     startDate(after, before) {
@@ -185,6 +212,9 @@ export default {
         this.clearDates();
       }
     },
+    tags(after, before) {
+      console.log("after", after, "before", before);
+    },
   },
 };
 </script>
@@ -196,5 +226,16 @@ export default {
 
 .note {
   font-size: 14px;
+}
+
+.tags-container {
+  min-height: 100px;
+  width: 50%;
+  padding: 10px;
+  border: 1px solid var(--gray-400);
+  display: flex;
+  justify-content: start;
+  gap: 4px;
+  flex-flow: row wrap;
 }
 </style>

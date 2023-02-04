@@ -47,6 +47,10 @@ export default {
           label: "Profesional Information",
           to: "/register/professional-info",
         },
+        {
+          label: "Social Information",
+          to: "/register/social-info",
+        },
       ],
       formObject: {},
     };

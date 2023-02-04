@@ -9,6 +9,7 @@ import SketchToDelete from "../jobit/pages/sketch-to-delete.vue";
 //Subviews
 import PersonalInfoSubview from "../jobit/pages/register/personal-info.vue";
 import ProfessionalInfoSubview from "../jobit/pages/register/professional-info.vue";
+import SocialInfoSubView from "../jobit/pages/register/social-info.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -37,6 +38,11 @@ const router = createRouter({
           path: "professional-info",
           name: "professional information",
           component: ProfessionalInfoSubview,
+        },
+        {
+          path: "social-info",
+          name: "social information",
+          component: SocialInfoSubView,
         },
       ],
     },

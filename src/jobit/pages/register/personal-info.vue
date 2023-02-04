@@ -4,6 +4,7 @@
       <form action="" class="p-fluid">
         <section>
           <h3 class="pb-3">Profile Photo</h3>
+          <profile-photo-upload></profile-photo-upload>
         </section>
         <pv-divider></pv-divider>
         <section>
@@ -82,7 +83,7 @@
                   v-model="birthday"
                   :showIcon="true"
                 ></pv-calendar>
-                <label for="email">Birthday</label>
+                <label for="email">Date of birth</label>
               </div>
             </div>
             <div class="field">
@@ -125,6 +126,15 @@
                 <label for="country">Country</label>
               </div>
             </div>
+            <div class="field">
+              <div class="p-float-label">
+                <pv-input-number
+                  placeholder=""
+                  v-model="cellphone"
+                ></pv-input-number>
+                <label for="cell">Cellphone Number</label>
+              </div>
+            </div>
           </div>
         </section>
         <div class="flex justify-content-end">
@@ -136,8 +146,10 @@
 </template>
 
 <script>
+import profilePhotoUpload from "../../components/profile-photo-upload.vue";
 import CountriesService from "../../services/countries.service";
 export default {
+  components: { profilePhotoUpload },
   data() {
     return {
       username: "",
@@ -148,6 +160,8 @@ export default {
       confirmPassword: "",
       birthday: "",
       country: "",
+      cell: "",
+      tags: [],
       countries: [],
     };
   },
