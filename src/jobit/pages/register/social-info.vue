@@ -8,7 +8,7 @@
             <div class="p-float-label">
               <pv-dropdown
                 v-model="social"
-                :options="socials"
+                :options="socialTypes"
                 :filter="true"
                 :showClear="true"
               >
@@ -23,7 +23,7 @@
                   </div>
                 </template>
               </pv-dropdown>
-              <label for="country">Degree</label>
+              <label for="country">Social Network</label>
             </div>
           </div>
           <div class="field col-4">
@@ -32,13 +32,17 @@
                 class="format"
                 v-model="socialNetwork"
               ></pv-input-text>
-              <label for="username">Social Network</label>
+              <label for="username">Social Url</label>
             </div>
           </div>
           <div class="col-6 w-max">
             <pv-button class="" icon="bi bi-plus" label="Add"> </pv-button>
           </div>
         </div>
+      </section>
+      <section>
+        <h3>Socials</h3>
+        <div class="added-socials"></div>
       </section>
     </form>
   </div>
@@ -51,7 +55,7 @@ export default {
       social: undefined,
       socialNetwork: "",
       //Collections
-      socials: [
+      socialTypes: [
         {
           id: 1,
           name: "Github",
@@ -70,5 +74,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

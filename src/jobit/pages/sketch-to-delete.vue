@@ -1,14 +1,14 @@
 <template>
   <div class="sketch">
-    <tag-component></tag-component>
+    <added-social-contact></added-social-contact>
   </div>
 </template>
 
 <script>
-import TagComponent from "../components/tag-component.vue";
+import AddedSocialContact from "../components/added-social-contact.vue";
 export default {
   components: {
-    TagComponent,
+    AddedSocialContact,
   },
 };
 </script>
