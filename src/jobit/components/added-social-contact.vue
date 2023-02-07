@@ -89,6 +89,8 @@ export default {
 
 .social-contact {
   width: 35%;
+  min-width: 400px;
+  max-width: 470px;
   height: 100px;
   padding: 20px;
   background-color: var(--blue-100);
