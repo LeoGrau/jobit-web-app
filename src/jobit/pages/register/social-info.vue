@@ -36,20 +36,37 @@
             </div>
           </div>
           <div class="col-6 w-max">
-            <pv-button class="" icon="bi bi-plus" label="Add"> </pv-button>
+            <pv-button
+              class=""
+              icon="bi bi-plus"
+              label="Add"
+              @click="addedSocialContact"
+            >
+            </pv-button>
           </div>
         </div>
       </section>
       <section>
         <h3>Socials</h3>
-        <div class="added-socials"></div>
+        <div class="added-socials">
+          <added-social-contact
+            v-for="addedSocialContact in addedSocialContacts"
+            :key="addedSocialContact.companyName"
+            :socialContact="addedSocialContact"
+          ></added-social-contact>
+        </div>
       </section>
     </form>
   </div>
 </template>
 
 <script>
+import AddedSocialContact from "../../components/added-social-contact.vue";
+import SocialContact from "../../models/social-contact";
 export default {
+  components: {
+    AddedSocialContact,
+  },
   data() {
     return {
       social: undefined,
@@ -68,6 +85,9 @@ export default {
           id: 3,
           name: "Reddit",
         },
+      ],
+      addedSocialContacts: [
+        new SocialContact("https://github.com/LeoGrau", "Github"),
       ],
     };
   },

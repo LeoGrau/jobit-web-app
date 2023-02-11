@@ -53,6 +53,12 @@
 <script>
 import SocialContact from "../models/social-contact";
 export default {
+  props: {
+    socialContact: {
+      type: SocialContact,
+      default: () => undefined,
+    },
+  },
   data() {
     return {
       //Inputs
@@ -61,16 +67,17 @@ export default {
       isEditing: false,
       isSaved: false,
       //Data
-      socialContact: new SocialContact("https://github.com/LeoGrau", "Github"),
+      updatedSocialContact: undefined,
       socialType: undefined,
     };
   },
   created() {
     this.updatedContactUrl = this.socialContact.urlContact;
+    this.updatedSocialContact = this.socialContact;
   },
   methods: {
     updateContactUrl() {
-      this.socialContact.urlContact = this.contactUrl;
+      this.updatedSocialContact.urlContact = this.contactUrl;
       this.$emit("update-contact", this.socialContact.urlContact);
     },
     deleteContactUrl() {
